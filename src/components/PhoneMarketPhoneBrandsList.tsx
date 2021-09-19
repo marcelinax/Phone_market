@@ -1,5 +1,6 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentPhoneBrand} from "../state/phoneBrandsSlice";
 import {RootState} from "../store";
 import PhoneMarketPhoneBrandItem from "./PhoneMarketPhoneBrandItem";
 import PhoneMarketPhoneBrandsListItem from "./PhoneMarketPhoneBrandsListItem";
@@ -9,6 +10,8 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
     const phoneBrandModels = useSelector((state: RootState) => state.phoneBrandModel.phoneBrandModel);
     const phoneBrands = useSelector((state: RootState) => state.phoneBrands.phoneBrands);
     const currentPhoneBrand = useSelector((state: RootState) => state.phoneBrands.currentPhoneBrand);
+    const dispatch = useDispatch();
+
 
     const renderPhoneBrandModels = (): JSX.Element[] | JSX.Element => {
         if (phoneBrandModels)
@@ -16,8 +19,9 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
                 <PhoneMarketPhoneBrandsListItem brand={phoneBrandModelPhone.brand} image={phoneBrandModelPhone.image}
                                                 phoneName={phoneBrandModelPhone.phone_name}/>
             ));
-        else return (phoneBrands.map(phoneBrands => (
-            <PhoneMarketPhoneBrandItem brand={phoneBrands.brand_name}/>
+        else return (phoneBrands.map(phoneBrand => (
+            <PhoneMarketPhoneBrandItem brand={phoneBrand.brand_name}
+                                       onClick={() => dispatch(setCurrentPhoneBrand(phoneBrand))}/>
         )));
     };
 
