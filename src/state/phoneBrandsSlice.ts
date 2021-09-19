@@ -3,11 +3,13 @@ import PhoneBrand from "../types/PhoneBrand";
 
 interface PhoneBrandsState {
     phoneBrands: PhoneBrand[];
+    currentPhoneBrand: PhoneBrand | null;
 }
 
 
 const initialState: PhoneBrandsState = {
-    phoneBrands: []
+    phoneBrands: [],
+    currentPhoneBrand: null,
 };
 
 export const phoneBrandsSlice = createSlice({
@@ -16,9 +18,12 @@ export const phoneBrandsSlice = createSlice({
     reducers: {
         setPhoneBrands: (state, action: PayloadAction<PhoneBrand[]>) => {
             state.phoneBrands = action.payload;
+        },
+        setCurrentPhoneBrand: (state, action: PayloadAction<PhoneBrand>) => {
+            state.currentPhoneBrand = action.payload;
         }
     }
 });
 
-export const {setPhoneBrands} = phoneBrandsSlice.actions;
+export const {setPhoneBrands, setCurrentPhoneBrand} = phoneBrandsSlice.actions;
 export default phoneBrandsSlice.reducer;

@@ -1,15 +1,19 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentPhoneBrand} from "../state/phoneBrandsSlice";
 import {RootState} from "../store";
 
 const PhoneMarketNavigation: React.FC = () => {
 
     const phoneBrands = useSelector((state: RootState) => state.phoneBrands.phoneBrands);
+    const dispatch = useDispatch();
 
 
     const renderPhoneBrands = (): JSX.Element[] => {
         return phoneBrands.map(phoneBrand => (
-            <p key={phoneBrand.brand_id}>{phoneBrand.brand_name}</p>
+            <p key={phoneBrand.brand_id} onClick={() => {
+                dispatch(setCurrentPhoneBrand(phoneBrand));
+            }}>{phoneBrand.brand_name}</p>
         ));
     };
 
