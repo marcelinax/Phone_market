@@ -3,10 +3,13 @@ import PhoneModel from "../types/PhoneModel";
 
 interface PhoneModelState {
     phoneModel: PhoneModel | null;
+    phoneSlug: string;
 }
 
 const initialState: PhoneModelState = {
-    phoneModel: null
+    phoneModel: null,
+    phoneSlug: ''
+
 };
 
 export const phoneModelSlice = createSlice({
@@ -15,9 +18,12 @@ export const phoneModelSlice = createSlice({
     reducers: {
         setPhoneModel: (state, action: PayloadAction<PhoneModel>) => {
             state.phoneModel = action.payload;
+        },
+        setPhoneSlug: (state, action: PayloadAction<string>) => {
+            state.phoneSlug = action.payload;
         }
     }
 });
 
-export const {setPhoneModel} = phoneModelSlice.actions;
+export const {setPhoneModel, setPhoneSlug} = phoneModelSlice.actions;
 export default phoneModelSlice.reducer;

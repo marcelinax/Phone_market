@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPhoneBrand} from "../state/phoneBrandsSlice";
+import {setPhoneSlug} from "../state/phoneModelSlice";
 import {RootState} from "../store";
 import PhoneMarketPhoneBrandItem from "./PhoneMarketPhoneBrandItem";
 import PhoneMarketPhoneBrandsListItem from "./PhoneMarketPhoneBrandsListItem";
@@ -17,7 +18,9 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
         if (phoneBrandModels)
             return phoneBrandModels.phones.map(phoneBrandModelPhone => (
                 <PhoneMarketPhoneBrandsListItem brand={phoneBrandModelPhone.brand} image={phoneBrandModelPhone.image}
-                                                phoneName={phoneBrandModelPhone.phone_name}/>
+                                                phoneName={phoneBrandModelPhone.phone_name}
+                                                onClick={() => dispatch(setPhoneSlug(phoneBrandModelPhone.slug))}
+                />
             ));
         else return (phoneBrands.map(phoneBrand => (
             <PhoneMarketPhoneBrandItem brand={phoneBrand.brand_name}

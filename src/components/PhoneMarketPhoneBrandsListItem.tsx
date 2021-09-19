@@ -4,6 +4,7 @@ interface Props {
     brand: string;
     phoneName: string;
     image: string;
+    onClick: () => void;
 }
 
 const getRandomPrice = (): number => {
@@ -13,9 +14,9 @@ const getRandomPrice = (): number => {
 
 };
 
-const PhoneMarketPhoneBrandsListItem: React.FC<Props> = ({brand, phoneName, image}) => {
+const PhoneMarketPhoneBrandsListItem: React.FC<Props> = ({brand, phoneName, image, onClick}) => {
     return (
-        <div className={'phone-market-phone-brands-list-item'}>
+        <div className={'phone-market-phone-brands-list-item'} onClick={onClick}>
             <div className={'phone-market-phone-brands-list-item-bg'}
                  style={{backgroundImage: `url(${image})`}}>
             </div>
