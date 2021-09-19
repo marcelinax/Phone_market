@@ -2,18 +2,18 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import PhoneBrandModel from "../types/PhoneBrandModel";
 
 interface PhoneBrandModelsSlice {
-    phoneBrandModel: PhoneBrandModel[];
+    phoneBrandModel: PhoneBrandModel | null;
 }
 
 const initialState: PhoneBrandModelsSlice = {
-    phoneBrandModel: []
+    phoneBrandModel: null
 };
 
 export const phoneBrandModelsSlice = createSlice({
     name: 'phoneBrandModel',
     initialState: initialState,
     reducers: {
-        setPhoneBrandModels: (state, action: PayloadAction<PhoneBrandModel[]>) => {
+        setPhoneBrandModels: (state, action: PayloadAction<PhoneBrandModel>) => {
             state.phoneBrandModel = action.payload;
         }
     }

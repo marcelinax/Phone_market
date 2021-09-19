@@ -20,7 +20,7 @@ function App() {
 
     const getPhoneBrandModels = (): void => {
         if (currentPhoneBrand !== null)
-            axios.get(`https://api-mobilespecs.azharimm.site/v2/brands/${currentPhoneBrand.brand_slug}`).then(res => dispatch(setPhoneBrandModels(res.data as PhoneBrandModel[])));
+            axios.get(`https://api-mobilespecs.azharimm.site/v2/brands/${currentPhoneBrand.brand_slug}`).then(res => dispatch(setPhoneBrandModels(res.data.data as PhoneBrandModel)));
     };
 
     useEffect(() => {

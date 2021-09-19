@@ -1,11 +1,33 @@
 import React from 'react';
 
-const PhoneMarketPhoneBrandsListItem: React.FC = () => {
+interface Props {
+    brand: string;
+    phoneName: string;
+    image: string;
+}
+
+const getRandomPrice = (): number => {
+    const min: number = Math.ceil(5);
+    const max: number = Math.floor(1000);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+};
+
+const PhoneMarketPhoneBrandsListItem: React.FC<Props> = ({brand, phoneName, image}) => {
     return (
-        <div>
+        <div className={'phone-market-phone-brands-list-item'}>
+            <div className={'phone-market-phone-brands-list-item-bg'}
+                 style={{backgroundImage: `url(${image})`}}>
+            </div>
+            <div className={'phone-market-phone-brands-list-item-bottom'}>
+                <p className={'phone-name'}>{phoneName}</p>
+                <p className={'phone-brand'}>{brand}</p>
+                <p className={'phone-price'}>${getRandomPrice()}</p>
+
+            </div>
 
         </div>
-    )
-}
+    );
+};
 
 export default PhoneMarketPhoneBrandsListItem;
