@@ -8,6 +8,8 @@
 }
 
 .phone-market {
+  display: flex;
+  width: 100%;
 
 }
 
@@ -19,6 +21,9 @@
   flex-direction: column;
   padding: 2rem 4rem;
   height: calc(100vh - 4rem);
+  position: fixed;
+  left: 0;
+  top: 0;
 
   &-phone-brands-list {
     margin-top: 3rem;
@@ -54,4 +59,12 @@
       border-radius: 20px;
     }
   }
+}
+
+.phone-market-phone-brands-list {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 600px;
+  padding: 8rem 3rem 2rem;
 }

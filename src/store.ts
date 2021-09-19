@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
+import phoneBrandModelsSlice from "./state/phoneBrandModelsSlice";
 import phoneBrandsSlice from "./state/phoneBrandsSlice";
 
 const store = configureStore({
     reducer: {
-        phoneBrands: phoneBrandsSlice
+        phoneBrands: phoneBrandsSlice,
+        phoneBrandModel: phoneBrandModelsSlice,
     },
 });
 
