@@ -131,3 +131,47 @@
     margin-right: 0;
   }
 }
+
+.phone-market-phone-brand-item {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin-right: 3rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(#000, .2);
+  transition: .3s all;
+
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+
+  &-bg {
+    background-image: url("https://www.pro-phone.eu/wp-content/uploads/2021/06/ikonka-telefon-komorkowy.png");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+
+    &-brand-box {
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      display: flex;
+      width: fit-content;
+      min-width: calc(100px - 2rem);
+      background-color: rgba(0, 0, 0, 0.17);
+      padding: 5px 1rem;
+
+      p {
+        font-size: 14px;
+        font-weight: 500;
+        
+      }
+    }
+  }
+}
