@@ -19,7 +19,7 @@ const PhoneMarketPhoneBrandsListItem: React.FC<Props> = ({brand, phoneName, imag
                 <p className={'phone-name'}>{phoneName}</p>
                 <p className={'phone-brand'}>{brand}</p>
                 <p className={'phone-price'}>${getRandomPrice()}</p>
-
+                <i className="bx bx-cart-alt bx-flip-horizontal"></i>
             </div>
 
         </div>
