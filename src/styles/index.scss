@@ -11,13 +11,20 @@
   display: flex;
   width: 100%;
 
+  .shopping-bag-btn {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+  }
 }
 
 .phone-market-navigation {
   display: flex;
   width: calc(600px - 8rem);
   background-color: #FFFF;
-  box-shadow: 0 0 15px rgba(#000, .2);
   flex-direction: column;
   padding: 2rem 4rem;
   height: calc(100vh - 4rem);
@@ -286,7 +293,7 @@
 
           &-row {
             display: flex;
-            
+
 
             .specification-name {
               font-size: 13px;
@@ -301,5 +308,129 @@
         }
       }
     }
+  }
+}
+
+.phone-market-shopping-bag {
+  width: calc(100% + 600px);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: -600px;
+  z-index: 3;
+  justify-content: flex-end;
+  display: flex;
+
+  .close-shopping-bag-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+  }
+
+  &-box {
+    height: calc(100% - 6.5rem);
+    background-color: #FFFF;
+    box-shadow: 0 0 15px rgba(#000, .2);
+    width: calc(500px - 3rem);
+    display: flex;
+    padding: 4rem 1.5rem 2.5rem;
+
+    &-list {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+    }
+  }
+}
+
+.phone-market-shopping-bag-item {
+  width: 100%;
+  min-height: 100px;
+  max-height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+
+  .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #8B8B8D;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &-photo {
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    justify-content: space-around;
+
+    &-top {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-weight: 500;
+
+        &:last-of-type {
+          font-size: 13px;
+          margin-top: -5px;
+          color: #8B8B8D;
+
+        }
+      }
+    }
+
+    &-bottom {
+      display: flex;
+
+      button {
+        display: flex;
+        border: 2px solid #D0D1D2;
+        background-color: transparent;
+        padding: 5px;
+        max-height: 30px;
+        min-height: 30px;
+        width: 30px;
+        align-items: center;
+        justify-content: center;
+        color: #D0D1D2;
+        margin-right: 5px;
+        outline: none;
+        cursor: pointer;
+
+        &:nth-child(2) {
+          width: calc(100px - 10px);
+          font-size: 13px;
+          cursor: unset;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+    }
+
+
   }
 }
