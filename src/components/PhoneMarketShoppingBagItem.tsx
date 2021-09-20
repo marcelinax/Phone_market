@@ -10,6 +10,7 @@ interface Props {
     deleteItem: () => void;
     addMoreToShoppingBag: () => void;
     removeOneFromShoppingBag: () => void;
+    totalAmount: number;
 
 }
 
@@ -20,7 +21,7 @@ const PhoneMarketShoppingBagItem: React.FC<Props> = ({
                                                          amount,
                                                          thumbnail,
                                                          deleteItem,
-                                                         addMoreToShoppingBag, removeOneFromShoppingBag
+                                                         addMoreToShoppingBag, removeOneFromShoppingBag, totalAmount
                                                      }) => {
 
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const PhoneMarketShoppingBagItem: React.FC<Props> = ({
             <div className={'phone-market-shopping-bag-item-photo'}
                  style={{backgroundImage: `url(${thumbnail})`}}/>
             <div className={'phone-market-shopping-bag-item-info'}>
+                <p className={'total-amount'}>${totalAmount}</p>
                 <div className={'phone-market-shopping-bag-item-info-top'}>
                     <p>{phoneName}</p>
                     <p>{brand}</p>
