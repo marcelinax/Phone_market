@@ -51,6 +51,7 @@ const PhoneMarketPhoneModel: React.FC<Props> = ({
     return (
         <div className={'phone-market-phone-model'}>
             <i className="bx bx-x close-btn" onClick={onClick}/>
+            <button>Buy <i className="bx bxs-cart-alt"></i></button>
             <div className={'phone-market-phone-model-box'}>
                 <div className={'phone-market-phone-model-box-bg'}
                      style={{backgroundImage: `url(${phone_images[0]})`}}/>

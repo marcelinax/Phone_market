@@ -199,6 +199,27 @@
   top: 0;
   left: 0;
 
+  button {
+    position: absolute;
+    bottom: 5rem;
+    right: calc(40% - 8rem - 30px);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 80px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+
+    i {
+      margin-left: 6px;
+    }
+
+  }
+
   .close-btn {
     position: absolute;
     top: 1rem;
