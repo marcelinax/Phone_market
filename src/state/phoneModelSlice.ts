@@ -16,7 +16,7 @@ export const phoneModelSlice = createSlice({
     name: 'phoneModel',
     initialState: initialState,
     reducers: {
-        setPhoneModel: (state, action: PayloadAction<PhoneModel>) => {
+        setPhoneModel: (state, action: PayloadAction<PhoneModel | null>) => {
             state.phoneModel = action.payload;
         },
         setPhoneSlug: (state, action: PayloadAction<string>) => {

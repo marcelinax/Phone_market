@@ -1,4 +1,5 @@
 import React from 'react';
+import getRandomPrice from "../utils/getRandomPrice";
 
 interface Props {
     brand: string;
@@ -7,12 +8,6 @@ interface Props {
     onClick: () => void;
 }
 
-const getRandomPrice = (): number => {
-    const min: number = Math.ceil(5);
-    const max: number = Math.floor(1000);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-
-};
 
 const PhoneMarketPhoneBrandsListItem: React.FC<Props> = ({brand, phoneName, image, onClick}) => {
     return (

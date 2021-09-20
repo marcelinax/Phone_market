@@ -82,6 +82,8 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+
 }
 
 .phone-market-phone-brands-list-item {
@@ -142,6 +144,10 @@
   box-shadow: 0 0 15px rgba(#000, .2);
   transition: .3s all;
 
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
 
   &:hover {
     transform: scale(0.9);
@@ -170,7 +176,129 @@
       p {
         font-size: 14px;
         font-weight: 500;
-        
+
+      }
+    }
+  }
+}
+
+.phone-market-phone-model {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  background-color: white;
+  top: 0;
+  left: 0;
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+
+
+  }
+
+  &-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &-bg {
+      width: 60%;
+      height: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+
+
+    }
+
+    &-info {
+      display: flex;
+      width: calc(40% - 10rem);
+      box-shadow: 0 0 15px rgba(#000, 0.2);
+      height: calc(100% - 20rem);
+      padding: 10rem 5rem;
+      flex-direction: column;
+
+
+      &-model-name {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+
+        h5 {
+          color: #8B8B8D;
+        }
+      }
+
+      &-model-main-info {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        p {
+          font-size: 15px;
+        }
+      }
+
+      &-model-more-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        overflow-y: auto;
+
+
+        &::-webkit-scrollbar {
+          width: 8px;
+
+
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #979691;
+          border-radius: 20px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: black;
+          border-radius: 20px;
+        }
+
+        .specification-box {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px;
+
+          h4 {
+            margin-bottom: 10px;
+          }
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+
+          &-row {
+            display: flex;
+            
+
+            .specification-name {
+              font-size: 13px;
+              font-weight: 600;
+            }
+
+            .specification-value {
+              margin-left: 10px;
+              font-size: 13px;
+            }
+          }
+        }
       }
     }
   }
