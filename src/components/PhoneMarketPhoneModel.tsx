@@ -18,7 +18,10 @@ interface Props {
         }[];
     }[];
     onClick: () => void;
+    addToShoppingBag: () => void;
+
 }
+
 
 const PhoneMarketPhoneModel: React.FC<Props> = ({
                                                     phone_images,
@@ -30,8 +33,9 @@ const PhoneMarketPhoneModel: React.FC<Props> = ({
                                                     storage,
                                                     thumbnail,
                                                     brand,
-                                                    children, onClick
+                                                    children, onClick, addToShoppingBag
                                                 }) => {
+
 
     const renderSpecifications = (): JSX.Element[] => {
         return specifications.map(specification => (
@@ -51,7 +55,7 @@ const PhoneMarketPhoneModel: React.FC<Props> = ({
     return (
         <div className={'phone-market-phone-model'}>
             <i className="bx bx-x close-btn" onClick={onClick}/>
-            <button>Buy <i className="bx bxs-cart-alt"></i></button>
+            <button onClick={addToShoppingBag}>Buy <i className="bx bxs-cart-alt"></i></button>
             <div className={'phone-market-phone-model-box'}>
                 <div className={'phone-market-phone-model-box-bg'}
                      style={{backgroundImage: `url(${phone_images[0]})`}}/>

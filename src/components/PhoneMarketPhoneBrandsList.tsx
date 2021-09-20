@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPhoneBrand} from "../state/phoneBrandsSlice";
 import {setPhoneModel, setPhoneSlug} from "../state/phoneModelSlice";
+import {addProductToShoppingBag} from "../state/shoppingBagSlice";
 import {RootState} from "../store";
 import PhoneMarketPhoneBrandItem from "./PhoneMarketPhoneBrandItem";
 import PhoneMarketPhoneBrandsListItem from "./PhoneMarketPhoneBrandsListItem";
@@ -39,7 +40,9 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
                                           storage={phoneModel.storage} specifications={phoneModel.specifications}
                                           onClick={() => {
                                               dispatch(setPhoneModel(null));
-                                          }}/>;
+
+                                          }}
+                                          addToShoppingBag={() => dispatch(addProductToShoppingBag(phoneModel))}/>;
         } else return <></>;
     };
 
