@@ -38,7 +38,8 @@ function App() {
     };
 
     const getPhoneModel = (): void => {
-        dispatch(setLoading(true));
+        if (phoneSlug === '') dispatch(setLoading(false));
+        else dispatch(setLoading(true));
         if (phoneSlug !== '')
             axios.get(`http://api-mobilespecs.azharimm.site/v2/${phoneSlug}`).then(res => {
                 dispatch(setLoading(false));

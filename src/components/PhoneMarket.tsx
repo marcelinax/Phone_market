@@ -17,7 +17,7 @@ const PhoneMarket: React.FC = () => {
 
         <div className={'phone-market'}>
             <i className="bx bx-shopping-bag shopping-bag-btn" onClick={() => setShowShoppingBag(true)}/>
-            {showShoppingBag ? <PhoneMarketShoppingBag setShowShoppingBag={() => setShowShoppingBag(false)}/> : <></>}
+            <PhoneMarketShoppingBag setShowShoppingBag={() => setShowShoppingBag(false)} isShown={showShoppingBag}/>
             <PhoneMarketNavigation/>
             <PhoneMarketPhoneBrandsList/>
             {phoneBrandsLoading ? <PhoneMarketSpinnerLoading/> : <></>}

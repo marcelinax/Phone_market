@@ -1,5 +1,6 @@
 import React from 'react';
 import getRandomPrice from "../utils/getRandomPrice";
+import PhoneMarketPhoneModelGallery from "./PhoneMarketPhoneModelGallery";
 
 interface Props {
     brand: string;
@@ -55,10 +56,15 @@ const PhoneMarketPhoneModel: React.FC<Props> = ({
     return (
         <div className={'phone-market-phone-model'}>
             <i className="bx bx-x close-btn" onClick={onClick}/>
-            <button onClick={addToShoppingBag}>Buy <i className="bx bxs-cart-alt"></i></button>
+            <button className={'buy-btn'} onClick={addToShoppingBag}>Buy <i className="bx bxs-cart-alt "></i></button>
             <div className={'phone-market-phone-model-box'}>
-                <div className={'phone-market-phone-model-box-bg'}
-                     style={{backgroundImage: `url(${phone_images[0]})`}}/>
+
+                {/*<div className={'phone-market-phone-model-box-bg'}*/}
+                {/*     style={{backgroundImage: `url(${phone_images[0]})`}}/>*/}
+                <div className={'phone-market-phone-model-box-bg'}>
+                    <PhoneMarketPhoneModelGallery images={phone_images}/>
+                </div>
+
                 <div className={'phone-market-phone-model-box-info'}>
                     <div className={'phone-market-phone-model-box-info-model-name'}>
                         <h1>{phone_name}</h1>
@@ -77,7 +83,8 @@ const PhoneMarketPhoneModel: React.FC<Props> = ({
                 </div>
             </div>
         </div>
-    );
+    )
+        ;
 };
 
 export default PhoneMarketPhoneModel;

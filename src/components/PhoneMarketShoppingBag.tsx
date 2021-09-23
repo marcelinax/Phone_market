@@ -11,11 +11,11 @@ import PhoneMarketShoppingBagItem from "./PhoneMarketShoppingBagItem";
 
 interface Props {
     setShowShoppingBag: () => void;
-
+    isShown: boolean;
 }
 
 
-const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
+const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag, isShown}) => {
 
     const shoppingBag = useSelector((state: RootState) => state.shoppingBag.shoppingBag);
     const shoppingBagProductAmounts = useSelector((state: RootState) => state.shoppingBag.shoppingBagProductAmounts);
@@ -23,7 +23,7 @@ const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
     const dispatch = useDispatch();
 
     const renderShoppingBagItems = (): JSX.Element[] | JSX.Element => {
-        return shoppingBag.length > 0 ? shoppingBag.map((item, index) => (
+        return shoppingBag.map((item, index) => (
             <PhoneMarketShoppingBagItem brand={item.brand} phoneName={item.phone_name}
                                         price={shoppingBagPriceOfFirstProducts[index]}
                                         amount={shoppingBagProductAmounts[index]} thumbnail={item.thumbnail}
@@ -32,7 +32,7 @@ const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
                                         removeOneFromShoppingBag={() => dispatch(deleteOneProductFromShoppingBag(item))}
                                         totalAmount={shoppingBagProductAmounts[index] * shoppingBagPriceOfFirstProducts[index]}
             />
-        )) : (<></>);
+        ));
     };
 
     const getTotalAmount = (): number => {
@@ -51,8 +51,8 @@ const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
 
 
     return (
-        <div className={'phone-market-shopping-bag'}>
-            <div className={`phone-market-shopping-bag-box`}>
+        <div className={isShown ? 'phone-market-shopping-bag' : 'phone-market-shopping-bag hide'}>
+            <div className={isShown ? `phone-market-shopping-bag-box show` : `phone-market-shopping-bag-box`}>
                 <i className="bx bx-x close-shopping-bag-btn" onClick={setShowShoppingBag}/>
                 <div className={'phone-market-shopping-bag-box-list'}>
                     {renderShoppingBagItems()}

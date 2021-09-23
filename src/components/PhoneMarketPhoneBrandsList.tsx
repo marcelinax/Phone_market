@@ -1,9 +1,11 @@
+import axios from "axios";
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPhoneBrand} from "../state/phoneBrandsSlice";
 import {setPhoneModel, setPhoneSlug} from "../state/phoneModelSlice";
 import {addProductToShoppingBag} from "../state/shoppingBagSlice";
 import {RootState} from "../store";
+import PhoneModel from "../types/PhoneModel";
 import PhoneMarketPhoneBrandItem from "./PhoneMarketPhoneBrandItem";
 import PhoneMarketPhoneBrandsListItem from "./PhoneMarketPhoneBrandsListItem";
 import PhoneMarketPhoneModel from "./PhoneMarketPhoneModel";
@@ -14,7 +16,7 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
     const phoneBrands = useSelector((state: RootState) => state.phoneBrands.phoneBrands);
     const currentPhoneBrand = useSelector((state: RootState) => state.phoneBrands.currentPhoneBrand);
     const phoneModel = useSelector((state: RootState) => state.phoneModel.phoneModel);
-  
+
     const dispatch = useDispatch();
 
 
@@ -24,6 +26,12 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
                 <PhoneMarketPhoneBrandsListItem brand={phoneBrandModelPhone.brand} image={phoneBrandModelPhone.image}
                                                 phoneName={phoneBrandModelPhone.phone_name}
                                                 onClick={() => dispatch(setPhoneSlug(phoneBrandModelPhone.slug))}
+                                                addToShoppingBag={(e) => {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    axios.get(`http://api-mobilespecs.azharimm.site/v2/${phoneBrandModelPhone.slug}`).then(res => dispatch(addProductToShoppingBag(res.data.data as PhoneModel)));
+
+                                                }}
                 />
             ));
         else return (phoneBrands.map(phoneBrand => (
@@ -41,6 +49,7 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
                                           storage={phoneModel.storage} specifications={phoneModel.specifications}
                                           onClick={() => {
                                               dispatch(setPhoneModel(null));
+                                              dispatch(setPhoneSlug(''));
 
                                           }}
                                           addToShoppingBag={() => dispatch(addProductToShoppingBag(phoneModel))}/>;
