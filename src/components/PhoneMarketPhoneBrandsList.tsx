@@ -14,6 +14,7 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
     const phoneBrands = useSelector((state: RootState) => state.phoneBrands.phoneBrands);
     const currentPhoneBrand = useSelector((state: RootState) => state.phoneBrands.currentPhoneBrand);
     const phoneModel = useSelector((state: RootState) => state.phoneModel.phoneModel);
+  
     const dispatch = useDispatch();
 
 
@@ -55,6 +56,7 @@ const PhoneMarketPhoneBrandsList: React.FC = () => {
             <div className={'phone-market-phone-brands-list-box'}>
                 {renderPhoneBrandModels()}
             </div>
+
         </div>
     );
 };

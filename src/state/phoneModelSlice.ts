@@ -4,11 +4,13 @@ import PhoneModel from "../types/PhoneModel";
 interface PhoneModelState {
     phoneModel: PhoneModel | null;
     phoneSlug: string;
+    loading: boolean;
 }
 
 const initialState: PhoneModelState = {
     phoneModel: null,
-    phoneSlug: ''
+    phoneSlug: '',
+    loading: true
 
 };
 
@@ -21,9 +23,11 @@ export const phoneModelSlice = createSlice({
         },
         setPhoneSlug: (state, action: PayloadAction<string>) => {
             state.phoneSlug = action.payload;
+        }, setLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
 });
 
-export const {setPhoneModel, setPhoneSlug} = phoneModelSlice.actions;
+export const {setPhoneModel, setPhoneSlug, setLoading} = phoneModelSlice.actions;
 export default phoneModelSlice.reducer;

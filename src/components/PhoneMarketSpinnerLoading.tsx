@@ -2,8 +2,8 @@ import React from 'react';
 
 const PhoneMarketSpinnerLoading: React.FC = () => {
     return (
-        <div>
-            <h1> Dupa</h1>
+        <div className={'phone-market-spinner-loading'}>
+            <i className="bx bx-loader"></i>
         </div>
     );
 };

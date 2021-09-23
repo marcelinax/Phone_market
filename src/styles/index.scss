@@ -24,6 +24,25 @@
   font-family: 'Poppins', sans-serif;
 }
 
+@keyframes rotateSpinLoader {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+
 .phone-market {
   display: flex;
   width: 100%;
@@ -560,5 +579,23 @@
     }
 
 
+  }
+}
+
+.phone-market-spinner-loading {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 5rem;
+    color: white;
+    animation: 2s rotateSpinLoader Infinite;
   }
 }

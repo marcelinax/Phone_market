@@ -3,10 +3,12 @@ import PhoneBrandModel from "../types/PhoneBrandModel";
 
 interface PhoneBrandModelsSlice {
     phoneBrandModel: PhoneBrandModel | null;
+    loading: boolean;
 }
 
 const initialState: PhoneBrandModelsSlice = {
-    phoneBrandModel: null
+    phoneBrandModel: null,
+    loading: true
 };
 
 export const phoneBrandModelsSlice = createSlice({
@@ -15,9 +17,12 @@ export const phoneBrandModelsSlice = createSlice({
     reducers: {
         setPhoneBrandModels: (state, action: PayloadAction<PhoneBrandModel>) => {
             state.phoneBrandModel = action.payload;
+        },
+        setLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
 });
 
-export const {setPhoneBrandModels} = phoneBrandModelsSlice.actions;
+export const {setPhoneBrandModels, setLoading} = phoneBrandModelsSlice.actions;
 export default phoneBrandModelsSlice.reducer;

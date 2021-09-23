@@ -4,12 +4,14 @@ import PhoneBrand from "../types/PhoneBrand";
 interface PhoneBrandsState {
     phoneBrands: PhoneBrand[];
     currentPhoneBrand: PhoneBrand | null;
+    loading: boolean;
 }
 
 
 const initialState: PhoneBrandsState = {
     phoneBrands: [],
     currentPhoneBrand: null,
+    loading: true
 };
 
 export const phoneBrandsSlice = createSlice({
@@ -21,9 +23,12 @@ export const phoneBrandsSlice = createSlice({
         },
         setCurrentPhoneBrand: (state, action: PayloadAction<PhoneBrand>) => {
             state.currentPhoneBrand = action.payload;
+        },
+        setLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
 });
 
-export const {setPhoneBrands, setCurrentPhoneBrand} = phoneBrandsSlice.actions;
+export const {setPhoneBrands, setCurrentPhoneBrand, setLoading} = phoneBrandsSlice.actions;
 export default phoneBrandsSlice.reducer;
