@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import PhoneMarket from "./components/PhoneMarket";
+import PhoneMarketSpinnerLoading from "./components/PhoneMarketSpinnerLoading";
 import {setPhoneBrandModels} from "./state/phoneBrandModelsSlice";
 import {setPhoneBrands} from "./state/phoneBrandsSlice";
 import {setPhoneModel} from "./state/phoneModelSlice";
@@ -12,6 +13,8 @@ import PhoneModel from "./types/PhoneModel";
 
 
 function App() {
+
+    const [loading, setLoading] = useState<boolean>(true);
 
     const dispatch = useDispatch<AppDispatch>();
     const currentPhoneBrand = useSelector((state: RootState) => state.phoneBrands.currentPhoneBrand);
@@ -40,14 +43,21 @@ function App() {
     useEffect(() => {
         getPhoneBrandModels();
     }, [currentPhoneBrand]);
-    
+
     useEffect(() => {
         getPhoneModel();
     }, [phoneSlug]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000);
+    }, []);
+
     return (
         <>
-            <PhoneMarket/>
+            {loading ? <PhoneMarketSpinnerLoading/> : <PhoneMarket/>}
+
         </>
     );
 }

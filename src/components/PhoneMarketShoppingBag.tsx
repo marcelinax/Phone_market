@@ -21,8 +21,8 @@ const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
     const shoppingBagPriceOfFirstProducts = useSelector((state: RootState) => state.shoppingBag.shoppingBagPriceOfFirstProducts);
     const dispatch = useDispatch();
 
-    const renderShoppingBagItems = (): JSX.Element[] => {
-        return shoppingBag.map((item, index) => (
+    const renderShoppingBagItems = (): JSX.Element[] | JSX.Element => {
+        return shoppingBag.length > 0 ? shoppingBag.map((item, index) => (
             <PhoneMarketShoppingBagItem brand={item.brand} phoneName={item.phone_name}
                                         price={shoppingBagPriceOfFirstProducts[index]}
                                         amount={shoppingBagProductAmounts[index]} thumbnail={item.thumbnail}
@@ -31,15 +31,21 @@ const PhoneMarketShoppingBag: React.FC<Props> = ({setShowShoppingBag}) => {
                                         removeOneFromShoppingBag={() => dispatch(deleteOneProductFromShoppingBag(item))}
                                         totalAmount={shoppingBagProductAmounts[index] * shoppingBagPriceOfFirstProducts[index]}
             />
-        ));
+        )) : (<></>);
     };
 
     const getTotalAmount = (): number => {
         const totalAmountOfEachProduct: number[] = [];
-        shoppingBag.map((item, index) => (
-            totalAmountOfEachProduct.push(shoppingBagProductAmounts[index] * shoppingBagPriceOfFirstProducts[index])
-        ));
-        return totalAmountOfEachProduct.reduce((acc, cur) => acc + cur);
+        if (shoppingBag.length > 0) {
+            shoppingBag.map((item, index) => (
+                totalAmountOfEachProduct.push(shoppingBagProductAmounts[index] * shoppingBagPriceOfFirstProducts[index])
+            ));
+            return totalAmountOfEachProduct.reduce((acc, cur) => acc + cur);
+        } else {
+            return 0;
+        }
+
+
     };
 
     return (
